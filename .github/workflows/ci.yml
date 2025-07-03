@@ -16,7 +16,7 @@ jobs:
       
     - name: Setup build environment
       run: |
-        apt-get update && apt-get install -y \
+        sudo apt-get update && sudo apt-get install -y \
             build-essential \
             cmake \
             devscripts \
@@ -27,8 +27,14 @@ jobs:
             pbuilder
 
         wget -q https://github.com/casey/just/releases/download/1.41.0/just-1.41.0-x86_64-unknown-linux-musl.tar.gz \
-            && tar -xzf just-1.41.0-x86_64-unknown-linux-musl.tar.gz -C /usr/local/bin just \
+            && tar -xzf just-1.41.0-x86_64-unknown-linux-musl.tar.gz -C /tmp just \
+            && sudo mv /tmp/just /usr/local/bin/just \
             && rm just-1.41.0-x86_64-unknown-linux-musl.tar.gz
+      
+    - name: Create build directories
+      run: |
+        sudo mkdir -p /app/out/libtrigger
+        sudo chown runner:runner /app/out/libtrigger
       
     - name: Build project
       run: just pkg
