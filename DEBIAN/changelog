@@ -1,0 +1,6 @@
+libtrigger (1.0.0-1) unstable; urgency=medium
+
+  * Initial release
+  * Callback-based API for file change events
+
+ -- Tony B <krakjn@gmail.com>  $(date -R) 

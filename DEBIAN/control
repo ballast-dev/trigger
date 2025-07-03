@@ -1,0 +1,11 @@
+Package: libtrigger
+Version: 1.0.0-1
+Section: libs
+Priority: optional
+Maintainer: Tony B <krakjn@gmail.com>
+Architecture: any
+Depends: libc6
+Description: Cross-platform file watching library
+ A C library for watching files and directories for changes
+ and calling callbacks when events occur. Supports both
+ macOS (kqueue) and Linux (inotify) platforms. 

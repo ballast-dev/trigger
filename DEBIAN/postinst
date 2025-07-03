@@ -1,0 +1,22 @@
+#!/bin/sh
+set -e
+
+# postinst script for libtrigger
+# This script runs after the package is installed
+
+case "$1" in
+    configure)
+        # Trigger library cache update
+        # This is more efficient than calling ldconfig directly
+        if [ -x /sbin/ldconfig ]; then
+            # Use trigger system if available, fallback to direct call
+            if command -v invoke-rc.d >/dev/null 2>&1; then
+                invoke-rc.d ldconfig start
+            else
+                /sbin/ldconfig
+            fi
+        fi
+        ;;
+esac
+
+exit 0 
