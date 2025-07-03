@@ -37,7 +37,7 @@ jobs:
         sudo chown runner:runner /app/out/libtrigger
       
     - name: Build project
-      run: just pkg
+      run: sudo just pkg
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
