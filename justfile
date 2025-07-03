@@ -13,7 +13,7 @@ enter:
 
 cmake:
     #!/bin/bash
-    export DESTDIR=/app/out/libtrigger
+    export DESTDIR=out/libtrigger
     cmake -B build -S src
     cmake --build build
     cmake --install build

@@ -31,13 +31,8 @@ jobs:
             && sudo mv /tmp/just /usr/local/bin/just \
             && rm just-1.41.0-x86_64-unknown-linux-musl.tar.gz
       
-    - name: Create build directories
-      run: |
-        sudo mkdir -p /app/out/libtrigger
-        sudo chown runner:runner /app/out/libtrigger
-      
     - name: Build project
-      run: sudo just pkg
+      run: just pkg
       
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
